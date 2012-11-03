@@ -16,7 +16,7 @@
 
 #pragma mark - Properties
 
-@synthesize emailField, passwordField;
+@synthesize emailField, passwordField, activityIndicator;
 
 
 
@@ -54,6 +54,7 @@
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 	self.emailField.enabled = self.passwordField.enabled = NO;
 	
+	[activityIndicator startAnimating];
 	// Sign in…
 }
 

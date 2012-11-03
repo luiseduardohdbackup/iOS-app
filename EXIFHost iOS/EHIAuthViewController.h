@@ -14,5 +14,6 @@
 
 @property (nonatomic, assign) IBOutlet UITextField *emailField;
 @property (nonatomic, assign) IBOutlet UITextField *passwordField;
+@property (nonatomic, assign) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
