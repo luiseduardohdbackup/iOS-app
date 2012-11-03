@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EHIAuthViewController : UIViewController <UITextFieldDelegate>
+@interface EHIAuthViewController : UIViewController <UITextFieldDelegate, NSURLConnectionDelegate> {
+	BOOL authSuccess;
+}
 
 -(void)signInTapped:(id)action;
 

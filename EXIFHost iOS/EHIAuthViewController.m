@@ -10,6 +10,9 @@
 
 @interface EHIAuthViewController ()
 
+-(void)setSignInItemsEnabled:(BOOL)enabled;
+-(void)showAlertWithIssue:(NSString *)issueDescription;
+
 @end
 
 @implementation EHIAuthViewController
@@ -17,6 +20,21 @@
 #pragma mark - Properties
 
 @synthesize emailField, passwordField, activityIndicator;
+
+-(void)setSignInItemsEnabled:(BOOL)enabled
+{
+	self.navigationItem.rightBarButtonItem.enabled = enabled;
+	self.emailField.enabled = self.passwordField.enabled = enabled;
+	
+	if(enabled)
+	{
+		[activityIndicator stopAnimating];
+	}
+	else
+	{
+		[activityIndicator startAnimating];
+	}
+}
 
 
 
@@ -34,6 +52,13 @@
 	signInButton.enabled = NO;
 	self.navigationItem.rightBarButtonItem = signInButton;
 	[signInButton release];
+	
+	NSString *email = [[NSUserDefaults standardUserDefaults] valueForKey:@"email"];
+	
+	if(email != nil)
+	{
+		self.emailField.text = email;
+	}
 }
 
 
@@ -51,11 +76,71 @@
 {
 	[[UIApplication sharedApplication] resignFirstResponder];
 	
-	self.navigationItem.rightBarButtonItem.enabled = NO;
-	self.emailField.enabled = self.passwordField.enabled = NO;
+	[self setSignInItemsEnabled:NO];
 	
-	[activityIndicator startAnimating];
-	// Sign in…
+	NSMutableURLRequest *authRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://exifhost-codeblock.rhcloud.com/users/sign_in"] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:15.0];
+	[authRequest setHTTPMethod:@"POST"];
+	[authRequest setHTTPBody:[[NSString stringWithFormat:@"user[email]=%@&user[password]=%@&user[remember_me]=0&user[remember_me]=1&commit=Sign+in", self.emailField.text, self.passwordField.text] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	NSURLConnection *connection = [NSURLConnection connectionWithRequest:authRequest delegate:self];
+	if(!connection)
+	{
+		[self showAlertWithIssue:@"Cannot connect to EXIFHost."];
+		[self setSignInItemsEnabled:YES];
+	}
+	
+	[authRequest release];
+}
+
+
+-(void)showAlertWithIssue:(NSString *)issueDescription
+{
+	UIAlertView *ohCrap = [[UIAlertView alloc] initWithTitle:@"Cannot Sign In"
+							 message:issueDescription
+							delegate:nil
+					       cancelButtonTitle:@"Dismiss"
+					       otherButtonTitles:nil];
+	[ohCrap show];
+	[ohCrap release];
+}
+
+
+
+
+#pragma mark - Connection delegate
+
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+	[self showAlertWithIssue:@"There may be a network issue.  Please try again later."];
+	[self setSignInItemsEnabled:YES];
+}
+
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+	if([[[response URL] lastPathComponent] compare:@"sign_in"] == NSOrderedSame)
+	{
+		authSuccess = NO;
+	}
+	else
+	{
+		authSuccess = YES;
+	}
+}
+
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+	if(!authSuccess)
+	{
+		[self showAlertWithIssue:@"Invalid email or password.  Try signing in again."];
+		[self setSignInItemsEnabled:YES];
+	}
+	else
+	{
+		[[NSUserDefaults standardUserDefaults] setValue:self.emailField.text forKey:@"email"];
+		[self dismissModalViewControllerAnimated:YES];
+	}
 }
 
 
