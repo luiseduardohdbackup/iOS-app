@@ -13,6 +13,10 @@
 		9EE9F35016448BE100F06FD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EE9F34E16448BE100F06FD6 /* InfoPlist.strings */; };
 		9EE9F35216448BE100F06FD6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE9F35116448BE100F06FD6 /* main.m */; };
 		9EE9F35616448BE100F06FD6 /* EHIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE9F35516448BE100F06FD6 /* EHIAppDelegate.m */; };
+		9EE9F35F16448CEB00F06FD6 /* EHIAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE9F35E16448CEB00F06FD6 /* EHIAuthViewController.m */; };
+		9EE9F36316448DFE00F06FD6 /* iPhoneBk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EE9F36116448DFE00F06FD6 /* iPhoneBk.png */; };
+		9EE9F36416448DFE00F06FD6 /* iPhoneBk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EE9F36216448DFE00F06FD6 /* iPhoneBk@2x.png */; };
+		9EE9F36616448E1C00F06FD6 /* EHIAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EE9F36516448E1C00F06FD6 /* EHIAuthViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,11 @@
 		9EE9F35316448BE100F06FD6 /* EXIFHost iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EXIFHost iOS-Prefix.pch"; sourceTree = "<group>"; };
 		9EE9F35416448BE100F06FD6 /* EHIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EHIAppDelegate.h; sourceTree = "<group>"; };
 		9EE9F35516448BE100F06FD6 /* EHIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EHIAppDelegate.m; sourceTree = "<group>"; };
+		9EE9F35D16448CEB00F06FD6 /* EHIAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHIAuthViewController.h; sourceTree = "<group>"; };
+		9EE9F35E16448CEB00F06FD6 /* EHIAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHIAuthViewController.m; sourceTree = "<group>"; };
+		9EE9F36116448DFE00F06FD6 /* iPhoneBk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneBk.png; sourceTree = "<group>"; };
+		9EE9F36216448DFE00F06FD6 /* iPhoneBk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhoneBk@2x.png"; sourceTree = "<group>"; };
+		9EE9F36516448E1C00F06FD6 /* EHIAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EHIAuthViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +83,9 @@
 			children = (
 				9EE9F35416448BE100F06FD6 /* EHIAppDelegate.h */,
 				9EE9F35516448BE100F06FD6 /* EHIAppDelegate.m */,
+				9EE9F36016448DF000F06FD6 /* Graphic Assets */,
 				9EE9F34C16448BE100F06FD6 /* Supporting Files */,
+				9EE9F35C16448C6B00F06FD6 /* View Controllers */,
 			);
 			path = "EXIFHost iOS";
 			sourceTree = "<group>";
@@ -88,6 +99,25 @@
 				9EE9F35316448BE100F06FD6 /* EXIFHost iOS-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9EE9F35C16448C6B00F06FD6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9EE9F35D16448CEB00F06FD6 /* EHIAuthViewController.h */,
+				9EE9F35E16448CEB00F06FD6 /* EHIAuthViewController.m */,
+				9EE9F36516448E1C00F06FD6 /* EHIAuthViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9EE9F36016448DF000F06FD6 /* Graphic Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9EE9F36116448DFE00F06FD6 /* iPhoneBk.png */,
+				9EE9F36216448DFE00F06FD6 /* iPhoneBk@2x.png */,
+			);
+			name = "Graphic Assets";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EE9F35016448BE100F06FD6 /* InfoPlist.strings in Resources */,
+				9EE9F36316448DFE00F06FD6 /* iPhoneBk.png in Resources */,
+				9EE9F36416448DFE00F06FD6 /* iPhoneBk@2x.png in Resources */,
+				9EE9F36616448E1C00F06FD6 /* EHIAuthViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +188,7 @@
 			files = (
 				9EE9F35216448BE100F06FD6 /* main.m in Sources */,
 				9EE9F35616448BE100F06FD6 /* EHIAppDelegate.m in Sources */,
+				9EE9F35F16448CEB00F06FD6 /* EHIAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +259,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EXIFHost iOS/EXIFHost iOS-Prefix.pch";
 				INFOPLIST_FILE = "EXIFHost iOS/EXIFHost iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -236,6 +271,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EXIFHost iOS/EXIFHost iOS-Prefix.pch";
 				INFOPLIST_FILE = "EXIFHost iOS/EXIFHost iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
