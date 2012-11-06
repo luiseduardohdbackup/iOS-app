@@ -55,8 +55,13 @@
 	[self.window makeKeyAndVisible];
 	
 	
-	
-	if([[NSUserDefaults standardUserDefaults] valueForKey:@"email"] == nil)
+	NSURLProtectionSpace *protectionSpace = [[NSURLProtectionSpace alloc]
+						 initWithHost:@"exifhost-codeblock.rhcloud.com"
+						 port:0
+						 protocol:@"https"
+						 realm:nil
+						 authenticationMethod:nil];
+	if([[NSURLCredentialStorage sharedCredentialStorage] defaultCredentialForProtectionSpace:protectionSpace] == nil)
 	{
 		EHIAuthViewController *authController = [[EHIAuthViewController alloc] initWithNibName:@"EHIAuthViewController" bundle:[NSBundle mainBundle]];
 		UINavigationController *authNavi = [[UINavigationController alloc] initWithRootViewController:authController];
@@ -65,6 +70,7 @@
 		[tabBarController presentModalViewController:authNavi animated:NO];
 		[authNavi release];
 	}
+	[protectionSpace release];
 	return YES;
 }
 

@@ -138,7 +138,21 @@
 	}
 	else
 	{
-		[[NSUserDefaults standardUserDefaults] setValue:self.emailField.text forKey:@"email"];
+		NSURLCredential *credential = [NSURLCredential credentialWithUser:self.emailField.text
+									 password:self.passwordField.text
+								      persistence:NSURLCredentialPersistencePermanent];
+		
+		NSURLProtectionSpace *protectionSpace = [[NSURLProtectionSpace alloc]
+							 initWithHost:@"exifhost-codeblock.rhcloud.com"
+							 port:0
+							 protocol:@"https"
+							 realm:nil
+							 authenticationMethod:nil];
+		
+		
+		[[NSURLCredentialStorage sharedCredentialStorage] setDefaultCredential:credential
+								    forProtectionSpace:protectionSpace];
+		[protectionSpace release];
 		[self dismissModalViewControllerAnimated:YES];
 	}
 }
@@ -168,6 +182,8 @@
 		[passwordField resignFirstResponder];
 		[self signInTapped:passwordField];
 	}
+	
+	return YES;
 }
 
 
