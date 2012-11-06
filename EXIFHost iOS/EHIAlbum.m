@@ -74,7 +74,7 @@
 
 #pragma mark - Properties
 
-@synthesize createdOn, updatedOn;
+@synthesize albumId, createdOn, updatedOn;
 
 
 -(NSString *)description

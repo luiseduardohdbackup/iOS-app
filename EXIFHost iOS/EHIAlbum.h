@@ -19,6 +19,7 @@
 
 // Album properties
 @property (retain) NSString *albumDescription;
+@property (readonly) NSUInteger albumId;
 @property (readonly) NSDate *createdOn;
 @property (assign) BOOL isPublic;
 @property (retain) NSString *title;
