@@ -10,7 +10,10 @@
 #import "EHIAlbum.h"
 #import "LazyImage.h"
 
-@interface EHIAlbumDetailViewController : UITableViewController <LazyImageDelegate> {
+@interface EHIAlbumDetailViewController : UITableViewController <LazyImageDelegate,
+                                                                 UIActionSheetDelegate,
+                                                                 UIImagePickerControllerDelegate,
+                                                                 UINavigationControllerDelegate> {
 	EHIAlbum *album;
 	NSArray *images;
 	NSMutableDictionary *thumbs, *downloads;
