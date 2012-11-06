@@ -8,6 +8,7 @@
 
 #import "EHIAppDelegate.h"
 
+#import "EHIAlbumsViewController.h"
 #import "EHIAuthViewController.h"
 
 @implementation EHIAppDelegate
@@ -25,7 +26,7 @@
 	
 	
 	
-	UIViewController *albumsController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+	EHIAlbumsViewController *albumsController = [[EHIAlbumsViewController alloc] initWithNibName:nil bundle:nil];
 	[albumsController setTitle:@"Albums"];
 	UINavigationController *albumsNavi = [[UINavigationController alloc] initWithRootViewController:albumsController];
 	albumsNavi.navigationBar.tintColor = [UIColor colorWithRed:0.58 green:0.58 blue:0.58 alpha:1.0];
