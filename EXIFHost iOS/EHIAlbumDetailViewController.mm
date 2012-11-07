@@ -341,7 +341,7 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	
-	EHIImage *model = [images objectAtIndex:[indexPath row]];
+	//EHIImage *model = [images objectAtIndex:[indexPath row]];
 	
 	cell.textLabel.text = @"Image";
 	
